@@ -29,6 +29,7 @@ class Settings:
     log_level: str
     environment: str
     cookie_secure: bool
+    frontend_url: str
 
 
 
@@ -50,4 +51,5 @@ def load_settings() -> Settings:
         log_level=os.getenv("LOG_LEVEL", "INFO"),
         environment=environment,
         cookie_secure=environment == "production",
+        frontend_url=os.getenv("FRONTEND_URL", "http://localhost:3000"),
     )

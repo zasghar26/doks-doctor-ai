@@ -146,7 +146,7 @@ def auth_callback(code: str) -> Response:
         }
     )
 
-    response = RedirectResponse(url="/")
+    response = RedirectResponse(url=settings.frontend_url)
     max_age = settings.jwt_expiry_days * 24 * 60 * 60
 
     response.set_cookie(

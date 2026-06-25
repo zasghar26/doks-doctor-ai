@@ -2,19 +2,18 @@
 const nextConfig = {
   output: 'standalone',
   async rewrites() {
-    // Proxy API calls to backend in development
-    return process.env.NODE_ENV === 'development'
-      ? [
-          {
-            source: '/api/:path*',
-            destination: `${process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000'}/api/:path*`,
-          },
-          {
-            source: '/auth/:path*',
-            destination: `${process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000'}/auth/:path*`,
-          },
-        ]
-      : []
+    // Proxy /api/* and /auth/* to the backend (works in both dev and production)
+    const backendBase = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000'
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${backendBase}/api/:path*`,
+      },
+      {
+        source: '/auth/:path*',
+        destination: `${backendBase}/auth/:path*`,
+      },
+    ]
   },
 }
 
