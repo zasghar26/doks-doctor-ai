@@ -35,7 +35,7 @@ class Settings:
 
 def load_settings() -> Settings:
     environment = os.getenv("ENVIRONMENT", "development").lower()
-    cors_origins = _split_csv(os.getenv("CORS_ORIGINS", "http://localhost:3000"))
+    cors_origins = _split_csv(_get_required("CORS_ORIGINS"))
 
     return Settings(
         do_oauth_client_id=_get_required("DO_OAUTH_CLIENT_ID"),
@@ -51,5 +51,5 @@ def load_settings() -> Settings:
         log_level=os.getenv("LOG_LEVEL", "INFO"),
         environment=environment,
         cookie_secure=environment == "production",
-        frontend_url=os.getenv("FRONTEND_URL", "http://localhost:3000"),
+        frontend_url=_get_required("FRONTEND_URL"),
     )
