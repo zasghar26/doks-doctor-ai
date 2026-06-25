@@ -1,6 +1,6 @@
 'use client'
 
-import { getLoginUrl } from './lib/api'
+import { getLoginUrl } from '../lib/api'
 
 export default function LoginPage() {
   const handleLogin = () => {
