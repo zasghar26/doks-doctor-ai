@@ -20,8 +20,7 @@ security implementation, operations procedures, troubleshooting, and code standa
 ## API Contract
 
 ### Base URL
-- Development: `http://localhost:8000`
-- Production: `https://api.your-app.com`
+- Configured via `BACKEND_URL` (backend) and `FRONTEND_URL` (frontend) environment variables.
 
 ### Authentication
 All protected requests require cookies (sent automatically with `credentials: "include"`):
